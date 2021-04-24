@@ -17,17 +17,17 @@ ECO = input("Enter ECO: ")
 
 with open("demo.pgn", "w") as o:
 
-o.write('[Event "%s"]\n' % (Event))
-o.write('[Site "%s"]\n' % (Site))
-o.write('[Date "%s"]\n' % (Date))
-o.write('[Round "%s"]\n' % (Round))
-o.write('[White "%s"]\n' % (White))
-o.write('[Black "%s"]\n' % (Black))
-o.write('[Result "%s"]\n' % (Result))
-o.write('[WhiteElo "%s"]\n' % (WhiteElo))
-o.write('[BlackElo "%s"]\n' % (BlackElo))
-o.write('[ECO "%s"]\n\n' % (ECO))
-o.write('%s\n\n' % (Game))
+    o.write('[Event "%s"]\n' % (Event))
+    o.write('[Site "%s"]\n' % (Site))
+    o.write('[Date "%s"]\n' % (Date))
+    o.write('[Round "%s"]\n' % (Round))
+    o.write('[White "%s"]\n' % (White))
+    o.write('[Black "%s"]\n' % (Black))
+    o.write('[Result "%s"]\n' % (Result))
+    o.write('[WhiteElo "%s"]\n' % (WhiteElo))
+    o.write('[BlackElo "%s"]\n' % (BlackElo))
+    o.write('[ECO "%s"]\n\n' % (ECO))
+    o.write('%s\n\n' % (Game))
 
 o.close()
 
