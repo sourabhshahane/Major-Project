@@ -15,7 +15,7 @@ WhiteElo = input("Enter WhiteElO: ")
 BlackElo = input("Enter BlackElO: ")
 ECO = input("Enter ECO: ")
 
-with open("demo.pgn", "a+") as o:
+with open("demo.pgn", "w") as o:
 
     o.write('[Event "%s"]\n' %(Event))
     o.write('[Site "%s"]\n' %(Site))
