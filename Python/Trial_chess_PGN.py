@@ -15,21 +15,19 @@ WhiteElo = input("Enter WhiteElO: ")
 BlackElo = input("Enter BlackElO: ")
 ECO = input("Enter ECO: ")
 
-o = open("C:\\Users\\SANIKA\\Desktop\\8th sem\\Subjects\\Major Project\\Major-Project\\Python\\demo.txt", "a+")
+with open("demo.pgn", "a+") as o:
 
-o.write('[Event "%s"]\n' %(Event))
-o.write('[Site "%s"]\n' %(Site))
-o.write('[Date "%s"]\n' %(Date))
-o.write('[Round "%s"]\n' %(Round))
-o.write('[White "%s"]\n' %(White))
-o.write('[Black "%s"]\n'%(Black))
-o.write('[Result "%s"]\n' %(Result))
-o.write('[WhiteElo "%s"]\n' %(WhiteElo))
-o.write('[BlackElo "%s"]\n' %(BlackElo))
-o.write('[ECO "%s"]\n\n' %(ECO))
-o.write('%s\n\n' %(Game))
-
-o.close()
+    o.write('[Event "%s"]\n' %(Event))
+    o.write('[Site "%s"]\n' %(Site))
+    o.write('[Date "%s"]\n' %(Date))
+    o.write('[Round "%s"]\n' %(Round))
+    o.write('[White "%s"]\n' %(White))
+    o.write('[Black "%s"]\n'%(Black))
+    o.write('[Result "%s"]\n' %(Result))
+    o.write('[WhiteElo "%s"]\n' %(WhiteElo))
+    o.write('[BlackElo "%s"]\n' %(BlackElo))
+    o.write('[ECO "%s"]\n\n' %(ECO))
+    o.write('%s\n\n' %(Game))
 
 #To delete all data from file
 #o = open("C:\\Users\\SANIKA\\Desktop\\8th sem\\Subjects\\Major Project\\Major-Project\\Python\\demo.txt", "a+")
