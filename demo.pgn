@@ -1,12 +1,12 @@
 [Event "Test"]
-[Site "Online"]
+[Site "online"]
 [Date "24/04/2021"]
 [Round "01"]
 [White "Sourabh"]
 [Black "Shreysh"]
-[Result "0-1"]
+[Result "1-0"]
 [WhiteElo "1200"]
-[BlackElo "1323"]
+[BlackElo "1222"]
 [ECO "00"]
 
 1.e4 e6 2.d4 d5 3.Nd2 Nf6 4.e5 Nfd7 5.f4 c5 6.c3 Nc6 7.Ndf3 cxd4 8.cxd4 f6

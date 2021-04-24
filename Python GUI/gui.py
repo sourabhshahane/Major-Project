@@ -24,7 +24,7 @@ def submit():
     BlackElo = belo.get()
     ECO = eco.get()
 
-    with open("D:\\code\\try\\demo.pgn", "w") as o:
+    with open("demo.pgn", "w") as o:
         o.write('[Event "%s"]\n' % (Event))
         o.write('[Site "%s"]\n' % (Site))
         o.write('[Date "%s"]\n' % (Date))
