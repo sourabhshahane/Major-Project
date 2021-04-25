@@ -1,4 +1,5 @@
 from tkinter import *
+
 # Creating window
 root = Tk()
 root.title("chessGame")
