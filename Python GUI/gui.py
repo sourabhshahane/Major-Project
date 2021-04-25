@@ -50,7 +50,7 @@ def submit():
     for i in range(len(val)):
         vald.insert(i, val[i].get())
 
-    with open(r'%s' % (pathf)+"\demo.txt", "w") as o:
+    with open(r'%s' % (pathf)+"\demo.png", "w") as o:
         for a in range(len(Nval)):
             o.write('[%s "%s"]\n' % (Nval[a], vald[a]))
 
