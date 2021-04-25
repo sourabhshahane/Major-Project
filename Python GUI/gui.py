@@ -1,6 +1,8 @@
+
+from tkinter import filedialog
 from tkinter import *
 
-# Creating window
+
 root = Tk()
 root.title("chessGame")
 root.geometry('500x500')
@@ -31,17 +33,24 @@ Nval = ["Event", "Site", "Date",
         "BlackElo", "ECO"]
 
 
+def path():
+    filename = filedialog.askdirectory()
+    print(filename)
+    pathf = filename.replace("/", "\\")
+    return pathf
+
+
 def erase(event):
     val[2].delete(0, "end")
-    return None
+    return 0
 
 
 def submit():
-
+    pathf = path()
     for i in range(len(val)):
         vald.insert(i, val[i].get())
 
-    with open("D:\\code\\try\\demo.pgn", "w") as o:
+    with open(r'%s' % (pathf)+"\demo.txt", "w") as o:
         for a in range(len(Nval)):
             o.write('[%s "%s"]\n' % (Nval[a], vald[a]))
 
@@ -53,6 +62,8 @@ def submit():
 
     label = Label(root, text="Data saved sucessfully!", fg="red", pady=5)
     label.grid(row=11, column=0, columnspan=2, padx=15, pady=25)
+
+    return 0
 
 
 # label
