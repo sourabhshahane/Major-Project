@@ -1,7 +1,9 @@
-import tkinter as tk
 
-# Creating window
-root = tk.Tk()
+from tkinter import filedialog
+from tkinter import *
+
+
+root = Tk()
 root.title("chessGame")
 root.geometry('500x500')
 
@@ -12,112 +14,79 @@ Game = '''1.e4 e6 2.d4 d5 3.Nd2 Nf6 4.e5 Nfd7 5.f4 c5 6.c3 Nc6 7.Ndf3 cxd4 8.cxd
 30.R7g5 Rc7 31.Bxf5 exf5 32.Rh5+  1-0'''
 
 
-def submit():
-    Event = event.get()
-    Site = site.get()
-    Date = date.get()
-    Round = round.get()
-    White = wp.get()
-    Black = bp.get()
-    Result = result.get()
-    WhiteElo = welo.get()
-    BlackElo = belo.get()
-    ECO = eco.get()
+val = ["event", "site", "date",
+       "round",
+       "wp",
+       "bp",
+       "result",
+       "welo",
+       "belo", "eco"]
 
-    with open("demo.pgn", "w") as o:
-        o.write('[Event "%s"]\n' % (Event))
-        o.write('[Site "%s"]\n' % (Site))
-        o.write('[Date "%s"]\n' % (Date))
-        o.write('[Round "%s"]\n' % (Round))
-        o.write('[White "%s"]\n' % (White))
-        o.write('[Black "%s"]\n' % (Black))
-        o.write('[Result "%s"]\n' % (Result))
-        o.write('[WhiteElo "%s"]\n' % (WhiteElo))
-        o.write('[BlackElo "%s"]\n' % (BlackElo))
-        o.write('[ECO "%s"]\n\n' % (ECO))
+vald = []
+
+Nval = ["Event", "Site", "Date",
+        "Round",
+        "White",
+        "Black",
+        "Result",
+        "WhiteElo",
+        "BlackElo", "ECO"]
+
+
+def path():
+    filename = filedialog.askdirectory()
+    print(filename)
+    pathf = filename.replace("/", "\\")
+    return pathf
+
+
+def erase(event):
+    val[2].delete(0, "end")
+    return 0
+
+
+def submit():
+    pathf = path()
+    for i in range(len(val)):
+        vald.insert(i, val[i].get())
+
+    with open(r'%s' % (pathf)+"\demo.pgn", "w") as o:
+        for a in range(len(Nval)):
+            o.write('[%s "%s"]\n' % (Nval[a], vald[a]))
+
         o.write('%s\n\n' % (Game))
         o.close()
 
-    # To delete all data from file
-    # o = open("C:\\Users\\SANIKA\\Desktop\\8th sem\\Subjects\\Major Project\\Major-Project\\Python\\demo.txt", "a+")
-    # o.truncate(0)
+    for i in range(len(val)):
+        val[i].delete(0, "end")
 
+    label = Label(root, text="Data saved sucessfully!", fg="red", pady=5)
+    label.grid(row=11, column=0, columnspan=2, padx=15, pady=25)
+
+    return 0
+
+
+# label
+Lname = ["Enter Event :", "Enter site :", "Enter Date :", "Enter Round :",
+         "White Player :", "Black Player :", "Result :", "WhiteElo :", "BlackElo :", "ECO :"]
 
 # creatin label
-# Event
-eve = tk.Label(root, text="Enter Event :")
-eve.grid(row=0, column=0, padx=5, pady=5)
+for q in range(len(Lname)):
+    Lname[q] = Label(root, text="%s" % (Lname[q]))
+    Lname[q].grid(row=q, column=0, padx=5, pady=5)
 
-event = tk.Entry(root, width=20)
-event.grid(row=0, column=1, padx=5, pady=5)
+# Creating input box
 
-# site
-st = tk.Label(root, text="Enter site :")
-st.grid(row=1, column=0, padx=5, pady=5)
+for i in range(len(val)):
+    val[i] = Entry(root, width=20)
+    val[i].grid(row=i, column=1, padx=5, pady=5)
 
-site = tk.Entry(root, width=20)
-site.grid(row=1, column=1, padx=5, pady=5)
-
-# Date
-dt = tk.Label(root, text="Enter Date :")
-dt.grid(row=2, column=0, padx=5, pady=5)
-
-date = tk.Entry(root, width=20)
-date.grid(row=2, column=1, padx=5, pady=5)
-
-# Round
-rd = tk.Label(root, text="Enter Round :")
-rd.grid(row=3, column=0, padx=5, pady=5)
-
-round = tk.Entry(root, width=20)
-round.grid(row=3, column=1, padx=5, pady=5)
-
-
-# White Player
-we = tk.Label(root, text="White Player :")
-we.grid(row=4, column=0, padx=5, pady=5)
-
-wp = tk.Entry(root, width=20)
-wp.grid(row=4, column=1, padx=5, pady=5)
-
-# Black Plyer
-bk = tk.Label(root, text="Black Player :")
-bk.grid(row=5, column=0, padx=5, pady=5)
-
-bp = tk.Entry(root, width=20)
-bp.grid(row=5, column=1, padx=5, pady=5)
-
-# Result
-rt = tk.Label(root, text="Result :")
-rt.grid(row=6, column=0, padx=5, pady=5)
-
-result = tk.Entry(root, width=20)
-result.grid(row=6, column=1, padx=5, pady=5)
-
-# WhiteElo
-wo = tk.Label(root, text="WhiteElo :")
-wo.grid(row=7, column=0, padx=5, pady=5)
-
-welo = tk.Entry(root, width=20)
-welo.grid(row=7, column=1, padx=5, pady=5)
-
-# blackElo
-bo = tk.Label(root, text="BlackElo :")
-bo.grid(row=8, column=0, padx=5, pady=5)
-
-belo = tk.Entry(root, width=20)
-belo.grid(row=8, column=1, padx=5, pady=5)
-
-# ECO
-eo = tk.Label(root, text="ECO :")
-eo.grid(row=9, column=0, padx=5, pady=5)
-
-eco = tk.Entry(root, width=20)
-eco.grid(row=9, column=1, padx=5, pady=5)
+val[2].insert(0, "dd.mm.yyyy")
+val[2].bind("<Button-1>", erase)
 
 # Button
-mybutton = tk.Button(root, text="Submit",
-                     padx=5, pady=5, command=submit)
+mybutton = Button(root, text="Submit",
+                  padx=5, pady=5, command=submit)
 mybutton.grid(row=10, column=0, padx=15, pady=25)
 
 
