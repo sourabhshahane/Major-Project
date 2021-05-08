@@ -30,12 +30,14 @@ while(F)
 {
   //Loop through and read all 16 values
   //Reports back Value at channel 6 is: 346
-  for(int i = 0; i < 16; i ++){
-    Serial.print("Value at channel ");
-    Serial.print(i);
-    Serial.print("is : ");
-    Serial.println(readMux(i));
+  for(int k = 0; k<2 ; k++){ 
+  for(int i = 0; i < 8; i ++){
+
+    Serial.print(readMux((k*8) + i));
+    Serial.print(" ");
     delay(50);
+  }
+  Serial.println();
   }
   F = false;
 }
@@ -70,7 +72,7 @@ int readMux(int channel){
   }
 
   //read the value at the SIG pin
-  int val = digitalRead(SIG_pin);
+  int val = !digitalRead(SIG_pin);
 
   //return the value
   return val;
