@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.font as font
 import serial
 from serial.serialutil import PortNotOpenError
 import serial.tools.list_ports
@@ -84,20 +85,20 @@ def secondpage():
     # creatin label
     for q in range(len(Lname)):
         Lname[q] = Label(root, text="%s" % (Lname[q]))
-        Lname[q].grid(row=q, column=0, padx=5, pady=5)
+        Lname[q].grid(row=q, column=0, padx=10, pady=10)
 
     # Creating input box
 
     for i in range(len(val)):
-        val[i] = Entry(root, width=20)
-        val[i].grid(row=i, column=1, padx=5, pady=5)
+        val[i] = Entry(root, width=20, borderwidth=2)
+        val[i].grid(row=i, column=1, padx=10, pady=10)
 
     val[2].insert(0, "dd.mm.yyyy")
     val[2].bind("<Button-1>", erase)
 
     # Button
-    mybutton = Button(root, text="Submit",
-                    padx=5, pady=5, command=submit)
+    mybutton = Button(root, text="Start the game",
+                    padx=5, pady=5, activebackground='red', bd=3, command=submit)
     mybutton.grid(row=10, column=0, padx=15, pady=25)
 
 
@@ -114,7 +115,7 @@ def portscan():
 
     if connection == True:
         ard= serial.Serial(portno,9600)
-        msg="connection is ok"
+        msg="Connection is ok"
 
         # data = str(ard.readline())
         # print(data)
@@ -122,7 +123,7 @@ def portscan():
         # print(type(data))
 
     else:
-        msg="connection failed"
+        msg="Connection failed"
     
     return connection  
 
@@ -131,22 +132,25 @@ def checkconnection():
     global name2
     global name3
 
-    name2= Label(root,text= "%s" % (msg))  
-    name2.grid(row=2, column=0, padx=15, pady=25)
+    name2= Label(root,text= "%s" % (msg), font=("Arial Bold", 16), fg='blue')  
+    name2.grid(row=2, column=1, padx=15, pady=25, )
     
     if (connect==True):
         name3 = Button(root, text="next",
-                  padx=5, pady=5, command=secondpage)
-        name3.grid(row=3, column=0, padx=15, pady=25)
+                  padx=5, pady=5, activebackground='yellow', bd=3, command=secondpage, font=font.Font(family='Courier', size=14, weight='bold'))
+        name3.grid(row=3, column=1, padx=15, pady=25)
     return 0   
  
  
 #-------------first page ___________________________
-name= Label(root,text="welcome!!")  
+name= Label(root,text="Welcome !!!", font=("Arial Bold", 18), fg='red')  
+name.grid(row=0, column=1, padx=15, pady=25)
+
+name= Label(root,text="       ")  
 name.grid(row=0, column=0, padx=15, pady=25)
 
 name1 = Button(root, text="Check Connection",
-                  padx=5, pady=5, command=checkconnection)
-name1.grid(row=1, column=0, padx=15, pady=25)
+                  padx=5, pady=5, activebackground='green', bd=3, command=checkconnection, font=font.Font(family='Helvetica', size=14, weight='bold'))
+name1.grid(row=1, column=1, padx=15, pady=25)
 
 root.mainloop()

@@ -1,6 +1,7 @@
 
 from tkinter import filedialog
 from tkinter import *
+import tkinter.font as font
 
 
 root = Tk()
@@ -73,20 +74,20 @@ Lname = ["Enter Event :", "Enter site :", "Enter Date :", "Enter Round :",
 # creatin label
 for q in range(len(Lname)):
     Lname[q] = Label(root, text="%s" % (Lname[q]))
-    Lname[q].grid(row=q, column=0, padx=5, pady=5)
+    Lname[q].grid(row=q, column=0, padx=10, pady=10)
 
 # Creating input box
 
 for i in range(len(val)):
-    val[i] = Entry(root, width=20)
-    val[i].grid(row=i, column=1, padx=5, pady=5)
+    val[i] = Entry(root, width=20, borderwidth=2)
+    val[i].grid(row=i, column=1, padx=10, pady=10)
 
 val[2].insert(0, "dd.mm.yyyy")
 val[2].bind("<Button-1>", erase)
 
 # Button
 mybutton = Button(root, text="Submit",
-                  padx=5, pady=5, command=submit)
+                  padx=5, pady=5, activebackground='red', bd=3, command=submit, font=font.Font(family='Helvetica', size=14, weight='bold'))
 mybutton.grid(row=10, column=0, padx=15, pady=25)
 
 
