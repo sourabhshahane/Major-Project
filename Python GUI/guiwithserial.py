@@ -83,6 +83,8 @@ def results():
     Lname[-1].grid(row=3, column=0, padx=10, pady=10)
     val[-1] = Entry(root, width=20, borderwidth=2)
     val[-1].grid(row=3, column=1, padx=10, pady=10)
+    
+    
     mybutton = Button(root, text="save",
                     padx=5, pady=5, activebackground='red', bd=3, command=submit)
     mybutton.grid(row=4, column=0, padx=15, pady=25)
