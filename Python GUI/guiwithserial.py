@@ -91,15 +91,6 @@ def isChecked():
 
 #-------------save results-----
 def results():
-<<<<<<< HEAD
-    Lname[-1] = Label(root, text="%s" % (Lname[-1]))
-    Lname[-1].grid(row=3, column=0, padx=10, pady=10)
-    val[-1] = Entry(root, width=20, borderwidth=2)
-    val[-1].grid(row=3, column=1, padx=10, pady=10)
-    
-    
-    mybutton = Button(root, text="save",
-=======
     global w
     w = IntVar()
     c1 = Radiobutton(root, text="White", variable=w, value=1, command=lambda: isChecked())
@@ -110,7 +101,6 @@ def results():
     c3.grid(row=5, column=1, padx=15, pady=10)
 
     mybutton = Button(root, text="Save",
->>>>>>> 5a00a279c74f4eb270120aa51863f6cb4f81ac05
                     padx=5, pady=5, activebackground='red', bd=3, command=submit)
     mybutton.grid(row=4, column=0, padx=15, pady=25)
     return 0
@@ -202,10 +192,10 @@ def checkconnection():
     name2.grid(row=2, column=1, padx=15, pady=25, )
     
     
-    #if (connect==True):
-    name3 = Button(root, text="next",
+    if (connect==True):
+        name3 = Button(root, text="next",
                   padx=5, pady=5, activebackground='yellow', bd=3, command=secondpage, font=font.Font(family='Courier', size=14, weight='bold'))
-    name3.grid(row=3, column=1, padx=15, pady=25)
+        name3.grid(row=3, column=1, padx=15, pady=25)
     return 0   
  
  
