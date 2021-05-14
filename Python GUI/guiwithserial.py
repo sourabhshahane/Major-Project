@@ -89,6 +89,10 @@ def results():
     return 0
 
 
+# def readline():
+#   data=ard.readline()inwaiting()
+#   return 0
+
 #--------------third page---------
 def thirdpage():
     for q in range(len(Lname)-1):
@@ -104,7 +108,9 @@ def thirdpage():
     mybutton = Button(root, text="Game Ended",
                     padx=5, pady=5, activebackground='red', bd=3, command=results)
     mybutton.grid(row=2, column=0, padx=15, pady=25)
-
+    
+    # root.after(100,readline)
+    
     return 0
 
 #-------second page------
