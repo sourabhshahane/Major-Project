@@ -21,8 +21,7 @@ Game = '''1.e4 e6 2.d4 d5 3.Nd2 Nf6 4.e5 Nfd7 5.f4 c5 6.c3 Nc6 7.Ndf3 cxd4 8.cxd
 val = ["event", "site", "date",
        "round",
        "wp",
-       "bp",
-       "result",
+       "bp"
        ]
 
 #------sotre data form input box---
@@ -30,14 +29,14 @@ vald = []
 
 #-------label names------
 Lname = ["Enter Event :", "Enter site :", "Enter Date :", "Enter Round :",
-            "White Player :", "Black Player :", "Result :",]
+            "White Player :", "Black Player :"]
 
 #----variable names to display pgn file---
 Nval = ["Event", "Site", "Date",
         "Round",
         "White",
         "Black",
-        "Result",
+        "Result"
         ]
 
 connection = False
@@ -62,6 +61,8 @@ def submit():
     for i in range(len(val)):
         vald.insert(i, val[i].get())
 
+    vald.append(win)        
+
     with open(r'%s' % (pathf)+"\\" + '%s' % (vald[0]) + "_" + '%s' % (vald[3]) + ".pgn", "w") as o:
         for a in range(len(Nval)):
             o.write('[%s "%s"]\n' % (Nval[a], vald[a]))
@@ -77,13 +78,29 @@ def submit():
 
     return 0
 
+def isChecked():
+    global win
+    win = ""
+    if w.get() == 1:
+        win = "1-0"
+    elif w.get() == 2:
+        win = "0-1"
+    elif w.get() == 3:
+        win = "0-0"
+    return 0
+
 #-------------save results-----
 def results():
-    Lname[-1] = Label(root, text="%s" % (Lname[-1]))
-    Lname[-1].grid(row=3, column=0, padx=10, pady=10)
-    val[-1] = Entry(root, width=20, borderwidth=2)
-    val[-1].grid(row=3, column=1, padx=10, pady=10)
-    mybutton = Button(root, text="save",
+    global w
+    w = IntVar()
+    c1 = Radiobutton(root, text="White", variable=w, value=1, command=lambda: isChecked())
+    c1.grid(row=3, column=1, padx=15, pady=10)
+    c2 = Radiobutton(root, text="Black", variable=w, value=2, command=lambda: isChecked())
+    c2.grid(row=4, column=1, padx=15, pady=10)
+    c3 = Radiobutton(root, text="Draw", variable=w, value=3, command=lambda: isChecked())
+    c3.grid(row=5, column=1, padx=15, pady=10)
+
+    mybutton = Button(root, text="Save",
                     padx=5, pady=5, activebackground='red', bd=3, command=submit)
     mybutton.grid(row=4, column=0, padx=15, pady=25)
     return 0
@@ -95,7 +112,7 @@ def results():
 
 #--------------third page---------
 def thirdpage():
-    for q in range(len(Lname)-1):
+    for q in range(len(Lname)):
         Lname[q].grid_forget()
         val[q].grid_forget()
     global mybutton
@@ -107,7 +124,7 @@ def thirdpage():
     #end game
     mybutton = Button(root, text="Game Ended",
                     padx=5, pady=5, activebackground='red', bd=3, command=results)
-    mybutton.grid(row=2, column=0, padx=15, pady=25)
+    mybutton.grid(row=2, column=1, padx=15, pady=25)
     
     # root.after(100,readline)
     
@@ -123,7 +140,7 @@ def secondpage():
     global mybutton
 
     # creatin label
-    for q in range(len(Lname)-1):
+    for q in range(len(Lname)):
         Lname[q] = Label(root, text="%s" % (Lname[q]))
         Lname[q].grid(row=q, column=0, padx=10, pady=10)
         val[q] = Entry(root, width=20, borderwidth=2)
@@ -175,10 +192,10 @@ def checkconnection():
     name2.grid(row=2, column=1, padx=15, pady=25, )
     
     
-    if (connect==True):
-        name3 = Button(root, text="next",
+    #if (connect==True):
+    name3 = Button(root, text="next",
                   padx=5, pady=5, activebackground='yellow', bd=3, command=secondpage, font=font.Font(family='Courier', size=14, weight='bold'))
-        name3.grid(row=3, column=1, padx=15, pady=25)
+    name3.grid(row=3, column=1, padx=15, pady=25)
     return 0   
  
  
