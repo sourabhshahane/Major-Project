@@ -5,7 +5,7 @@ int s2 = 10;
 int s3 = 11;
 
 //Mux in "SIG" pin
-int SIG_pin = A1;
+int SIG_pin = A2;
 
 bool F = true;
   
