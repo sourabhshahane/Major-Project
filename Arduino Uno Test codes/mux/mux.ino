@@ -5,7 +5,7 @@ int s2 = 10;
 int s3 = 11;
 
 //Mux in "SIG" pin
-int SIG_pin = A2;
+int SIG_pin = A3;
 
 bool F = true;
   
@@ -14,12 +14,13 @@ void setup(){
   pinMode(s1, OUTPUT); 
   pinMode(s2, OUTPUT); 
   pinMode(s3, OUTPUT); 
-
+  pinMode(SIG_pin, INPUT_PULLUP);
+  pinMode(13, OUTPUT);
   digitalWrite(s0, LOW);
   digitalWrite(s1, LOW);
   digitalWrite(s2, LOW);
   digitalWrite(s3, LOW);
-
+  
   Serial.begin(9600);
 
 }
@@ -70,7 +71,9 @@ int readMux(int channel){
   for(int i = 0; i < 4; i ++){
     digitalWrite(controlPin[i], muxChannel[channel][i]);
   }
-
+  digitalWrite(13, HIGH);
+delay(1000);
+digitalWrite(13, LOW);
   //read the value at the SIG pin
   int val = !digitalRead(SIG_pin);
 

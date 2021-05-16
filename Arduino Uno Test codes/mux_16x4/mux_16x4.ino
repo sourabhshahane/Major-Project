@@ -51,8 +51,11 @@ while(F)
       Serial.println();
     }
     F = false;
+     
     }
+    Serial.println();
   }
+ 
 }
 
 int readMux(int channel)
@@ -84,10 +87,10 @@ int readMux(int channel)
   {
     digitalWrite(controlPin[i], muxChannel[channel][i]);
   }
-
+  delay(50);
   //read the value at the SIGNAL pins
   for(int i = 0; i < 4; i ++)
-  {
+  { 
     output[i][channel] = !digitalRead(signalPin[i]);
   }
 }

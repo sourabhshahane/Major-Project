@@ -4,7 +4,7 @@ const int S1 = 9;
 const int S2 = 10;
 const int S3 = 11;
 
-//Mux in "SIG" pin
+//Mux in "SIG" pin 
 const int SIG_1 = A1;
 const int SIG_2 = A2;
 const int SIG_3 = A3;
@@ -35,8 +35,9 @@ void setup(){
 
 void loop()
 {
-/*
+
  // for printing on serial monitor and debugging
+/*
 while(F)
 {
 
@@ -45,13 +46,11 @@ while(F)
     readMux(i);
   }
   
-  
-   
-  for(int j = 0 ; j > 4 ; j--)
+  for(int j = 0 ; j < 4 ; j++)
   {
     for(int k = 0; k < 2 ; k++)
     { 
-      for(int i = 0; i < 8; i ++)
+      for(int i = 7; i >= 0; i--)
       {
         Serial.print(output[j][(8*k) + i]);
         Serial.print("  ");
@@ -60,20 +59,27 @@ while(F)
     }
     F = false;
     }
+    Serial.println();
   }
-*/
-  for(int j = 4 ; j > 0 ; j--)
+  */
+  
+for(int i = 0 ; i < 16 ; i++)
   {
-    for(int k = 0; k < 2 ; k++)
+    readMux(i);
+  }
+  
+  for(int j = 3 ; j >= 0 ; j--)
+  {
+    for(int k = 1; k >= 0 ; k--)
     { 
-      for(int i = 0; i < 8; i ++)
+      for(int i = 7; i >= 0; i--)
       {
         Serial.print(output[j][(8*k) + i]);
       }
       Serial.println();
     }
   }
-  delay(100);
+  delay(2000);
 }
 
 int readMux(int channel)
@@ -83,22 +89,22 @@ int readMux(int channel)
 
   int muxChannel[16][4]=
   { 
-    {1,1,1,1},
-    {0,1,1,1},
-    {1,0,1,1},
-    {0,0,1,1},
-    {1,1,0,1},
-    {0,1,0,1},
-    {1,0,0,1},
-    {0,0,0,1},
-    {1,1,1,0},
-    {0,1,1,0},
-    {1,0,1,0},
-    {0,0,1,0},
-    {1,1,0,0},
-    {0,1,0,0},
-    {1,0,0,0},
-    {0,0,0,0},
+    {0,0,0,0}, //channel 0
+    {1,0,0,0}, //channel 1
+    {0,1,0,0}, //channel 2
+    {1,1,0,0}, //channel 3
+    {0,0,1,0}, //channel 4
+    {1,0,1,0}, //channel 5
+    {0,1,1,0}, //channel 6
+    {1,1,1,0}, //channel 7
+    {0,0,0,1}, //channel 8
+    {1,0,0,1}, //channel 9
+    {0,1,0,1}, //channel 10
+    {1,1,0,1}, //channel 11
+    {0,0,1,1}, //channel 12
+    {1,0,1,1}, //channel 13
+    {0,1,1,1}, //channel 14
+    {1,1,1,1}  //channel 15
 
     };
 
