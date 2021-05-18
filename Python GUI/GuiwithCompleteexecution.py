@@ -273,6 +273,7 @@ def movename(piece,move,cposition):
             if(cposition>55 or cposition < 8):
                 #print(cposiname+"=Q")
                 storemove.append(cposiname+"=Q")
+                print(storemove)
                 pawnpromotion=True
                 if(piece[0]=="w"):
                     location.update({"wQ1":cposition})
@@ -283,24 +284,28 @@ def movename(piece,move,cposition):
             else:
                 # print(cposiname)
                 storemove.append(cposiname)
+                print(storemove)
         
         #for king
         elif(piece[1]=="K"):
             #wirte k nad changed postion name
             # print(piece[1]+cposiname)
             storemove.append(piece[1]+cposiname)
+            print(storemove)
 
         #for Queen
         elif(piece[1]=="Q"):
             #wirte Q nad changed postion name
             # print(piece[1]+cposiname)    
-            storemove.append(piece[1]+cposiname)    
+            storemove.append(piece[1]+cposiname)
+            print(storemove)    
         
         #for bishop
         elif(piece[1]=="B"):
             #wirte B nad changed postion name
             # print(piece[1]+cposiname)    
-            storemove.append(piece[1]+cposiname)    
+            storemove.append(piece[1]+cposiname)
+            print(storemove)    
 
 
         #for Knight check wheater the changed positon is in other knights path
@@ -311,6 +316,7 @@ def movename(piece,move,cposition):
             finalposi=start+cposiname
             # print(finalposi)
             storemove.append(finalposi)
+            print(storemove)
         
         #for Rook
         elif(piece[1]=="R"):
@@ -319,7 +325,8 @@ def movename(piece,move,cposition):
             #final postion
             finalposi=start+cposiname
             # print(finalposi)        
-            storemove.append(finalposi)        
+            storemove.append(finalposi)
+            print(storemove)        
 
     elif(move=="killed"):
 
@@ -329,6 +336,7 @@ def movename(piece,move,cposition):
             if(cposition>55 or cposition < 8):
                 # print(pawnposi[0]+"x"+cposiname+"=Q")
                 storemove.append(pawnposi[0]+"x"+cposiname+"=Q")
+                print(storemove)
                 pawnpromotion=True
                 if(piece[0]=="w"):
                     location.update({"wQ1":cposition})
@@ -337,36 +345,42 @@ def movename(piece,move,cposition):
             else:
                 # print(pawnposi[0]+"x"+cposiname)
                 storemove.append(pawnposi[0]+"x"+cposiname)
+                print(storemove)
         
         elif(piece[1]=="N"):
             start=knightpath(cposition,piece)
             finalposi=start+"x"+cposiname
             # print(finalposi)
             storemove.append(finalposi)
+            print(storemove)
         
         elif(piece[1]=="R"):
             start=rookpath(cposition,piece)
             finalposi=start+"x"+cposiname
             # print(finalposi)
             storemove.append(finalposi)
+            print(storemove)
 
         #for king
         elif(piece[1]=="K"):
             #wirte k nad changed postion name
             # print(piece[1]+"x"+cposiname)
             storemove.append(piece[1]+"x"+cposiname)
+            print(storemove)
 
         #for Queen
         elif(piece[1]=="Q"):
             #wirte Q nad changed postion name
             # print(piece[1]+"x"+cposiname)    
-            storemove.append(piece[1]+"x"+cposiname)    
+            storemove.append(piece[1]+"x"+cposiname)
+            print(storemove)    
         
         #for bishop
         elif(piece[1]=="B"):
             #wirte B nad changed postion name
             # print(piece[1]+"x"+cposiname)
             storemove.append(piece[1]+"x"+cposiname)
+            print(storemove)
     return 0
 
 
@@ -483,7 +497,6 @@ def eval(inputdata):
         if(len(pos)!=0):
             change(pos[0])
 
-   
     #putnewstr into oldstr
     oldstr=newstr
     firstcome=2
@@ -499,9 +512,13 @@ def read(status=True):
         # while(len(tdata)!=64):
         #     data=arduino.read(1).decode('ascii')
         #     tdata+=data
-        id=root.after(200,read)
-        eval(tdata)    
+        id=root.after(10,read)
         # print(tdata)
+        # eval(tdata)
+
+        if len(tdata) == 65:
+            print(tdata)
+            eval(tdata)    
     else:
         print("stopped")
         root.after_cancel(id)
@@ -586,10 +603,10 @@ def portscan():
     if (connectiontry):
         name2.grid_forget()
         
-    
     ports = list(serial.tools.list_ports.comports())
     for p in ports:
-        if "Arduino" in p.description:
+
+        if ("Arduino" in p.description) or ("USB Serial Device" in p.description):
             portno = p.name
             connection = True
 

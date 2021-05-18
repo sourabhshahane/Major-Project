@@ -415,6 +415,8 @@ def read(status=True):
         # while(len(tdata)!=64):
         #     data=arduino.read(1).decode('ascii')
         #     tdata+=data
+
+        print(tdata)
         id=root.after(250,read)
         eval(tdata)    
         

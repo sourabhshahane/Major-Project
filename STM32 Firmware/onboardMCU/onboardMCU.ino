@@ -79,8 +79,8 @@ for(int i = 0 ; i < 16 ; i++)
       }
     }
   }
-  Serial.println();
-  delay(5000);
+  Serial.print('\n');
+  delay(150);
 }
 
 int readMux(int channel)
