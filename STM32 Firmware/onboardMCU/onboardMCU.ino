@@ -35,9 +35,9 @@ void setup(){
 
 void loop()
 {
-
- // for printing on serial monitor and debugging
 /*
+ // for printing on serial monitor and debugging
+
 while(F)
 {
 
@@ -61,6 +61,7 @@ while(F)
     }
     Serial.println();
   }
+  
   */
   
 for(int i = 0 ; i < 16 ; i++)
@@ -76,10 +77,10 @@ for(int i = 0 ; i < 16 ; i++)
       {
         Serial.print(output[j][(8*k) + i]);
       }
-      Serial.println();
     }
   }
-  delay(2000);
+  Serial.println();
+  delay(5000);
 }
 
 int readMux(int channel)

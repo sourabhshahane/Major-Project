@@ -20,7 +20,7 @@ oldstr=""
 firstcome=1
 
 #no need in main code
-arduino= serial.Serial("COM5",9600)
+arduino= serial.Serial("COM6",9600)
 
 #var Used in change
 temp1=None
