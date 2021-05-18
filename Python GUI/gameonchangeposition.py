@@ -386,11 +386,7 @@ change(41)
 change(1)
 change(10)
 change(10)
-change(57)
-change(51)
-change(51)
-change(16)
-change(57)
+
 
 
 gamestore()
