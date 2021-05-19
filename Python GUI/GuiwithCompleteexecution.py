@@ -168,33 +168,39 @@ def rookpath(cposi,piece):
     c=1
     d=1
     arr=[]
+    found=False
     #finding other Rook position
     if(piece[2]=="r"):
         oppositename=piece[0:2]+"l"
-        pos=location[oppositename]
+        if oppositename in location.keys():
+            pos=location[oppositename]
+            found=True
     
     else:
         oppositename=piece[0:2]+"r"
-        pos=location[oppositename] 
+        if oppositename in location.keys():
+            pos=location[oppositename] 
+            found=True
 
-    #find its row location
-    row=((pos//8)+1)
-    #all positions of the same row
-    while(((pos+a)//8)+1==row):
-        arr.append(pos+a)
-        a+=1
-    
-    while(((pos-b)//8)+1==row):
-        arr.append(pos-b)
-        b+=1
-    #add all postions of the same column
-    while(pos+(8*c)<64):
-        arr.append(pos+(8*c))
-        c+=1
-    
-    while(pos-(8*d)>=0):
-        arr.append(pos-(8*d))
-        d+=1
+    if(found):
+        #find its row location
+        row=((pos//8)+1)
+        #all positions of the same row
+        while(((pos+a)//8)+1==row):
+            arr.append(pos+a)
+            a+=1
+        
+        while(((pos-b)//8)+1==row):
+            arr.append(pos-b)
+            b+=1
+        #add all postions of the same column
+        while(pos+(8*c)<64):
+            arr.append(pos+(8*c))
+            c+=1
+        
+        while(pos-(8*d)>=0):
+            arr.append(pos-(8*d))
+            d+=1
 
     # if changed position of first knight is in path of otherkinght
     if cposi in arr:
@@ -209,42 +215,48 @@ def rookpath(cposi,piece):
 
 def knightpath(cposi,piece):
     #getting the changed position and name of knight
+    found=False
     arr=[]
     #finding other Kinght position
     if(piece[2]=="r"):
         oppositename=piece[0:2]+"l"
-        pos=location[oppositename]
-    
+        if oppositename in location.keys():
+            pos=location[oppositename]
+            found=True    
     else:
         oppositename=piece[0:2]+"r"
-        pos=location[oppositename]    
+        if oppositename in location.keys():
+            pos=location[oppositename]    
+            found=True    
+
 
     #findign all possibel paths of the other knight
-    row=((pos//8)+1)
-    if(((pos-2)//8)+1==row):
-        if(pos-8>=0):
-            arr.append(pos-10)
-        if(pos+8<64):
-            arr.append(pos+6)
-    
-    if(((pos-1)//8)+1==row):
-        if(pos-16>=0):
-            arr.append(pos-17)
-        if(pos+16<64):
-            arr.append(pos+15)
-    
-    if(((pos+1)//8)+1==row):
-        if(pos-16>=0):
-            arr.append(pos-15)
-        if(pos+16<64):
-            arr.append(pos+17)
-    
-    if(((pos+2)//8)+1==row):
-        if(pos-8>=0):
-            arr.append(pos-6)
-        if(pos+8<64):
-            arr.append(pos+10)
-    
+    if(found == True):
+        row=((pos//8)+1)
+        if(((pos-2)//8)+1==row):
+            if(pos-8>=0):
+                arr.append(pos-10)
+            if(pos+8<64):
+                arr.append(pos+6)
+        
+        if(((pos-1)//8)+1==row):
+            if(pos-16>=0):
+                arr.append(pos-17)
+            if(pos+16<64):
+                arr.append(pos+15)
+        
+        if(((pos+1)//8)+1==row):
+            if(pos-16>=0):
+                arr.append(pos-15)
+            if(pos+16<64):
+                arr.append(pos+17)
+        
+        if(((pos+2)//8)+1==row):
+            if(pos-8>=0):
+                arr.append(pos-6)
+            if(pos+8<64):
+                arr.append(pos+10)
+        
     # if changed position of first knight is in path of otherkinght
     if cposi in arr:
         start= intersect(piece,oppositename)
@@ -460,7 +472,7 @@ def change(pos):
                         location[temp2]=cassnewposi[0]
                     # print("o-o-o")
                     storemove.append("o-o-o")
-                
+                    print(storemove)
                 if(temp2[2]=="r"):
                     if cassnewposi[0]>cassnewposi[1]:
                         location[temp1]=cassnewposi[0] 
@@ -470,6 +482,7 @@ def change(pos):
                         location[temp2]=cassnewposi[0]
                     # print("o-o")
                     storemove.append("o-o")
+                    print(storemove)
 
                 cassnewposi.clear()
                 secondstore=False
