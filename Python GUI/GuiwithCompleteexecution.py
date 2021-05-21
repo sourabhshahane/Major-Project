@@ -612,8 +612,10 @@ def change(pos):
             # first variable has value
             if(firststore == True):
                 temp2 = key
-                secondstore = True
                 firststore = False
+                if(temp1 == temp2):
+                    break
+                secondstore = True
 
             # both variable has value and kill operation (third in data base)
             elif (secondstore == True):
