@@ -276,6 +276,8 @@ def submit():
         vald.insert(i, val[i].get())
 
     vald.append(win)
+
+    # writing in gaem variabel
     gamestore(win)
 
     with open(r'%s' % (pathf)+"\\" + '%s' % (vald[0]) + "_" + '%s' % (vald[3]) + ".pgn", "w") as o:
@@ -1205,9 +1207,12 @@ def results():
 
 
 def thirdpage():
+    # erase previous data of second page
     for q in range(len(Lname)):
         Lname[q].grid_forget()
         val[q].grid_forget()
+
+    # start the game button erase
     global mybutton
     mybutton.grid_forget()
 
