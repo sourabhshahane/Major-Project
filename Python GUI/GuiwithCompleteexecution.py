@@ -559,7 +559,7 @@ def read(status=True):
         # print(tdata)
         # eval(tdata)
 
-        if len(tdata) == 65:
+        if len(tdata) == 5:
             print(tdata)
             eval(tdata)
     else:
