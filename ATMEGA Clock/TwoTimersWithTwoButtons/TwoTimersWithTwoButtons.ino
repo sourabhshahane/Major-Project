@@ -35,7 +35,7 @@
 
 int8_t WhiteTimeDisp[] = {0x00,0x00,0x00,0x00};
 int8_t BlackTimeDisp[] = {0x00,0x00,0x00,0x00};
-bool isWhite = 1;
+volatile bool isWhite = 1;
 bool WhiteLost = false;
 bool BlackLost = false;
 unsigned char WhiteClockPoint = 1;
@@ -46,8 +46,8 @@ unsigned char WhitetenthOfSecond = 0;
 unsigned char BlacktenthOfSecond = 0;
 unsigned char Whitesecond = 0;
 unsigned char Blacksecond = 0;
-unsigned char Whiteminute = 1;
-unsigned char Blackminute = 1;
+unsigned char Whiteminute = 10;
+unsigned char Blackminute = 10;
 
 
 #define WhiteCLK 6         //pins definitions for TM1637 and can be changed to other ports
@@ -84,8 +84,8 @@ void setup()
   BlackTimeDisp[3] = Blacksecond % 10;
   BlackClock.display(BlackTimeDisp);
 
-  attachInterrupt(digitalPinToInterrupt(2), turnChangeToWhite, FALLING ); 
-  attachInterrupt(digitalPinToInterrupt(3), turnChangeToBlack, FALLING ); 
+  attachInterrupt(digitalPinToInterrupt(2), turnChangeToWhite, RISING ); 
+  attachInterrupt(digitalPinToInterrupt(3), turnChangeToBlack, RISING ); 
   delay(1000);
   
   Timer1.initialize(100000);              //timing for 100ms
