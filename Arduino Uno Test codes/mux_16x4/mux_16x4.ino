@@ -31,6 +31,7 @@ void setup(){
 
 
 void loop(){
+
 while(F)
 {
 
@@ -55,8 +56,9 @@ while(F)
     }
     Serial.println();
   }
- 
+
 }
+
 
 int readMux(int channel)
 {
