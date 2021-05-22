@@ -234,7 +234,7 @@ def rookpath(cposi, piece):
         if(pfound == False):
             arr.clear()
 
-    print(arr)
+    #print(arr)
     for i in arr:
         if i in location.values():
             empty = False
@@ -560,7 +560,7 @@ def read(status=True):
         # eval(tdata)
 
         if len(tdata) == 65:
-            print(tdata)
+            #print(tdata)
             eval(tdata)
     else:
         print("stopped")
