@@ -14,9 +14,6 @@ bool F = true;
 
 bool output[4][16];
 
-char outbuf[64];
-String finalSTR = "";
-
 void setup(){
   pinMode(S0, OUTPUT); 
   pinMode(S1, OUTPUT); 
@@ -35,17 +32,17 @@ void setup(){
 
 void loop()
 {
-/*
+/* 
  // for printing on serial monitor and debugging
 
 while(F)
 {
-
++
   for(int i = 0 ; i < 16 ; i++)
   {
     readMux(i);
   }
-  
+ 
   for(int j = 0 ; j < 4 ; j++)
   {
     for(int k = 0; k < 2 ; k++)
@@ -62,6 +59,7 @@ while(F)
     Serial.println();
   }
   
+  
   */
   
 for(int i = 0 ; i < 16 ; i++)
@@ -75,7 +73,7 @@ for(int i = 0 ; i < 16 ; i++)
     { 
       for(int i = 7; i >= 0; i--)
       {
-        Serial.print(output[j][(8*k) + i]);
+        Serial.print(output[3][(8*k) + i]);
       }
     }
   }
